@@ -24,8 +24,8 @@ module.exports = () => {
         chunks: ["main"],
       }),
       new WebpackPwaManifest({
-        name: "Alexis Text editor",
-        short_name: "ALEX",
+        name: "Just Another Text Editor",
+        short_name: "JATE",
         description: "A text editor for use of offline or online",
         background_color: "blue",
         theme_color: "white",
