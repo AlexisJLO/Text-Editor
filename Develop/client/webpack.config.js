@@ -17,10 +17,52 @@ module.exports = () => {
       filename: "[name].bundle.js",
       path: path.resolve(__dirname, "dist"),
     },
-    plugins: [],
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "./index.html",
+        favicon: "./favicon.ico",
+        chunks: ["main"],
+      }),
+      new WebpackPwaManifest({
+        name: "Alexis Text editor",
+        short_name: "ALEX",
+        description: "A text editor for use of offline or online",
+        background_color: "blue",
+        theme_color: "white",
+        start_url: "/",
+        publicPath: "/",
+        display: "standalone",
+        icons: [
+          {
+            src: path.resolve(__dirname, "src/images/logo.png"),
+            sizes: [96, 128, 192, 256, 384, 512],
+            purpose: "any maskable",
+          },
+        ],
+      }),
+      new InjectManifest({
+        swSrc: "./src-sw.js",
+        swDest: "service-worker.js",
+      }),
+    ],
 
     module: {
-      rules: [],
+      rules: [
+        {
+          test: /\.css$/,
+          use: ["style-loader", "css-loader"],
+        },
+        {
+          test: /\.js/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-env"],
+            },
+          },
+        },
+      ],
     },
   };
 };
