@@ -17,7 +17,7 @@ ALEX is a straightforward yet dependable text editor designed for note-taking or
 
 ## Usage
 
-This application should be used by student developers learning how to write code and need a friendly text editor to start. It can also be used by veteran software developer
+This application should be used by student developers learning how to write code and need a friendly text editor to start. It can also be used by veteran software developer.
 
 ## License
 
